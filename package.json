@@ -1,0 +1,9 @@
+{
+  "name": "whenbe",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "db": "./bin/configure_db.sh"
+  }
+}
