@@ -4,13 +4,20 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch app --watch utils --watch sectets app/app.js",
+    "dev": "nodemon --watch app --watch utils --watch sectets --watch server server/app.js",
     "db": "./bin/configure_db.sh"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "pg": "^7.7.1"
+    "jsdom": "^13.0.0",
+    "json2csv": "^4.3.1",
+    "node-telegram-bot-api": "^0.30.0",
+    "pg": "^7.7.1",
+    "python-shell": "^1.0.6",
+    "socks5-https-client": "^1.2.1",
+    "vk-io": "^4.0.0-rc.9"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

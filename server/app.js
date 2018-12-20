@@ -1,6 +1,9 @@
 const express = require("express");
-const artist = require("./artist/index");
+const bodyParser = require("body-parser");
+const artist = require("./artist/route");
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use("/artist", artist);
 
