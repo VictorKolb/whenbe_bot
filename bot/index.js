@@ -31,7 +31,7 @@ async function parse() {
   }
 }
 
-schedule.scheduleJob("17 * * *", function() {
+schedule.scheduleJob("0 17 * * *", function() {
   parse();
 });
 
