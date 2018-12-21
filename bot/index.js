@@ -1,4 +1,5 @@
 const TelegramBot = require("node-telegram-bot-api");
+const schedule = require("node-schedule");
 const Agent = require("socks5-https-client/lib/Agent");
 const config = require("../secrets/config");
 const getConcertsString = require("../parser/app");
@@ -20,10 +21,16 @@ const bot = new TelegramBot(token, {
 });
 
 async function parse() {
+  bot.sendMessage(168224148, "Пойду посмотрю, что там по концертам");
   const result = await getConcertsString();
+
   if (result) {
     bot.sendMessage(168224148, result);
+  } else {
+    bot.sendMessage(168224148, "По концертам пока тишина.");
   }
 }
 
-parse();
+schedule.scheduleJob("17 * * *", function() {
+  parse();
+});
