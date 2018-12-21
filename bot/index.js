@@ -34,3 +34,5 @@ async function parse() {
 schedule.scheduleJob("17 * * *", function() {
   parse();
 });
+
+bot.sendMessage(168224148, "Whenbe bot запущен успешно");
