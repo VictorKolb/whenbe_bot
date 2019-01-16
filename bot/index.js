@@ -36,3 +36,10 @@ schedule.scheduleJob("0 17 * * *", function() {
 });
 
 bot.sendMessage(168224148, "Whenbe bot запущен успешно");
+
+bot.on("message", async msg => {
+  const { text } = msg;
+  if (text === "че там") {
+    parse();
+  }
+});
