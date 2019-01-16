@@ -8,6 +8,16 @@ router.get("/all", async (req, res) => {
   res.json(artists.rows);
 });
 
+router.get("/add", async (req, res) => {
+  const { title, vkId } = req.query;
+  await ArtistTable.createArtist({
+    title,
+    vkId,
+  });
+
+  res.json("ok");
+});
+
 router.post("/update", async (req, res) => {
   const artists = await ArtistTable.updateLastPostId(req.body);
 
