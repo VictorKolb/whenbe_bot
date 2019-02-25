@@ -20,26 +20,27 @@ const bot = new TelegramBot(token, {
   },
 });
 
-async function parse() {
-  bot.sendMessage(168224148, "Пойду посмотрю, что там по концертам");
+async function parse({ withRespond = false }) {
   const result = await getConcertsString();
 
   if (result) {
     bot.sendMessage(168224148, result);
   } else {
-    bot.sendMessage(168224148, "По концертам пока тишина.");
+    withRespond && bot.sendMessage(168224148, "По концертам пока тишина.");
   }
 }
 
-schedule.scheduleJob("0 17 * * *", function() {
-  parse();
+schedule.scheduleJob("0 * * * *", function() {
+  parse({ withRespond: false });
 });
 
 bot.sendMessage(168224148, "Whenbe bot запущен успешно");
 
 bot.on("message", async msg => {
   const { text } = msg;
+
   if (text === "че там") {
-    parse();
+    bot.sendMessage(168224148, "Пойду посмотрю, что там по концертам");
+    parse({ withRespond: true });
   }
 });
